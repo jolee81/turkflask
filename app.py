@@ -10,8 +10,8 @@ import os
 import flask
 from bokeh.embed import components
 from bokeh.plotting import figure, output_file, show
-from bokeh.resources import INLINE
-from bokeh.util.string import encode_utf8
+#from bokeh.resources import INLINE
+#from bokeh.util.string import encode_utf8
 
 app = Flask(__name__)
 
@@ -64,5 +64,10 @@ def index():
         script, div = components(plot)
         return render_template('plot.html', script=script, div=div, company=company, ticker=ticker)
 
+
 if __name__ == '__main__':
-    app.run(port=33507)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port)
+    
+#if __name__ == '__main__':
+#    app.run(port=33507)

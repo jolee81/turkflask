@@ -3,8 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<title>Stock Ticker Plot</title>
-		
-        <link rel="stylesheet" href="http://cdn.pydata.org/bokeh/release/bokeh-0.12.5.min.css" type="text/css" />
+		<link rel="stylesheet" href="http://cdn.pydata.org/bokeh/release/bokeh-0.12.5.min.css" type="text/css" />
          <script type="text/javascript" src="http://cdn.pydata.org/bokeh/release/bokeh-0.12.5.min.js"></script>
             {{ script | indent(4) | safe }}
 	</head>
@@ -13,7 +12,7 @@
         
         {{ div | indent(4) | safe }} 
         <h1>Generated plot for {{company}} ({{ticker}}) </h1>
-        <h3><a href="/index">Click here to generate a new plot!</a></h3>
+        <h2><a href="/index">Click here to generate a new plot!</a></h2>
         </div>
 	</body>
 </html>
