@@ -2,14 +2,28 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-		<title>Hello, World! My name is Jo</title>
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+		<title>Stock Ticker Plot</title>
+		<link rel=stylesheet type=text/css href='static/style.css'>
 	</head>
 	<body>
 		<div>
-  			<h1>Hello, World!</h1>
+  			<h1>Johanna's Milestone Project for TDI </h1>
+              <div class=metanav>
+              <h4>Please enter a stock ticker eg. GOOG, AAPL, and check desired features.</h4>
+
+    			<form id='input' method='post' action='index'>	
+	  			<p>
+					Ticker symbol: <input type='text' name='ticker' />
+	  			</p>
+	  			<p>
+					<input type="radio" name='features' value='Close'>Closing price <br>
+					<input type="radio" name='features' value='Adj. Close'>Adjusted closing price <br>
+					<input type="radio" name='features' value='Volume'>Volume<br>
+	    			<input type="submit" value="Submit">
+	  			</p>
+				</form>
+              
+              </div>
 		</div>
 	</body>
 </html>

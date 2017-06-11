@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Stock Ticker Plot</title>
+		<link rel=stylesheet type=text/css href='static/style.css'>
+         <script type="text/javascript" src="http://cdn.pydata.org/bokeh/release/bokeh-0.12.5.min.js"></script>
+            {{ script | indent(4) | safe }}
+	</head>
+	<body>
+       <div class=page>     
+        
+        {{ div | indent(4) | safe }} 
+        <h1>Generated plot for {{company}} ({{ticker}}) </h1>
+        <h3><a href="/index">Click here to generate a new plot!</a></h3>
+        </div>
+	</body>
+</html>
