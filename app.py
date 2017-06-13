@@ -62,8 +62,8 @@ def index():
         generate_volume(ticker, volume)
         
         script, div = components(plot)
-        #return render_template('plot.html', script=script, div=div, company=company, ticker=ticker)
-        return render_template('index.html')
+        return render_template('plot.html', script=script, div=div, company=company, ticker=ticker)
+        #return render_template('index.html')
 
 
     
