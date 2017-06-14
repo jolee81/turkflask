@@ -4,7 +4,7 @@ import bokeh
 import requests
 import json
 import pandas as pd
-import os
+
 
 # bokeh / flask imports
 import flask
@@ -32,8 +32,8 @@ def index():
         closing = 'Close' in app.vars['features']
         adj_closing = 'Adj. Close' in app.vars['features']
         volume = 'Volume' in app.vars['features']
-# 
-        r = requests.get('https://www.quandl.com/api/v3/datasets/WIKI/'+ticker+'.json?order=asc')
+ 
+        r = requests.get('https://www.quandl.com/api/v3/datasets/WIKI/'+ticker+'.json?order=asc' + 'wpAG5_BdecqoADP7-Dtx')
         parsed_json = json.loads(r.text)
         df = pd.DataFrame(parsed_json['dataset']['data'])
         df.columns = parsed_json['dataset']['column_names']
@@ -41,28 +41,28 @@ def index():
         company = parsed_json['dataset']['name']
         company = company.split('(')
         company = company[0]
+#        
+#        def generate_close(ticker, closing):
+#            if closing:
+#                return plot.line(df['Date'], df['Close'], color='#0000FF', legend=ticker+": Close")
+#        def generate_adjclose(ticker,adj_closing):
+#            if adj_closing:
+#                return plot.line(df['Date'], df['Adj. Close'], color='#009933', legend=ticker+": Adj. Close")            
+#        def generate_volume(ticker, volume):
+#            if volume:
+#                return plot.line(df['Date'], df['Volume'], color='#CC3300', legend=ticker+": Volume")
+#            
+#        plot = figure(tools="pan,wheel_zoom,box_zoom,reset",
+#              title='Data from Quandle WIKI set',
+#              x_axis_label='date',
+#              x_axis_type='datetime')
+#        
+#        generate_close(ticker, closing)
+#        generate_adjclose(ticker, adj_closing)
+#        generate_volume(ticker, volume)
         
-        def generate_close(ticker, closing):
-            if closing:
-                return plot.line(df['Date'], df['Close'], color='#0000FF', legend=ticker+": Close")
-        def generate_adjclose(ticker,adj_closing):
-            if adj_closing:
-                return plot.line(df['Date'], df['Adj. Close'], color='#009933', legend=ticker+": Adj. Close")            
-        def generate_volume(ticker, volume):
-            if volume:
-                return plot.line(df['Date'], df['Volume'], color='#CC3300', legend=ticker+": Volume")
-            
-        plot = figure(tools="pan,wheel_zoom,box_zoom,reset",
-              title='Data from Quandle WIKI set',
-              x_axis_label='date',
-              x_axis_type='datetime')
-        
-        generate_close(ticker, closing)
-        generate_adjclose(ticker, adj_closing)
-        generate_volume(ticker, volume)
-        
-        script, div = components(plot)
-        return render_template('plot.html', script=script, div=div, company=company, ticker=ticker)
+#        script, div = components(plot)
+        return render_template('plot.html', company=company, ticker=ticker)
         #return render_template('index.html')
 
 
