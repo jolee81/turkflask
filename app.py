@@ -10,7 +10,7 @@ import pandas as pd
 import flask
 from bokeh.embed import components
 from bokeh.plotting import figure, output_file, show
-#from bokeh.resources import INLINE
+from bokeh.resources import INLINE
 #from bokeh.util.string import encode_utf8
 import os
 
@@ -53,7 +53,7 @@ def index():
             if volume:
                 return plot.line(df['Date'], df['Volume'], color='#CC3300', legend=ticker+": Volume")
                 
-        output_file("stockstest.html", title=company)
+        output_file("stockplot.html", title=company)
                 
         plot = figure(tools="pan,wheel_zoom,box_zoom,reset",
               title='Data from Quandle WIKI set',
@@ -64,14 +64,12 @@ def index():
         generate_open(ticker, opening)
         generate_volume(ticker, volume)
         
-        script, div = components(plot)
+        script, div = components(plot, INLINE)
         return render_template('plot.html', company=company, ticker=ticker, script=script, div=div)
         #return render_template('index.html')
 
 
-  if __name__ == '__main__':
-    port = int(os.environ.get("PORT", 5000))
-    app.run(host='0.0.0.0', port=port)
+
     
-#if __name__ == '__main__':
-#    app.run(port=33507)
+if __name__ == '__main__':
+    app.run(port=33507)
