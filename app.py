@@ -30,7 +30,7 @@ def index():
         app.vars['features'] = request.form.getlist('features')
         ticker = app.vars['ticker']
         closing = 'Close' in app.vars['features']
-        adj_closing = 'Adj. Close' in app.vars['features']
+        opening = 'Open' in app.vars['features']
         volume = 'Volume' in app.vars['features']
  
         r = requests.get('https://www.quandl.com/api/v3/datasets/WIKI/'+ticker+'.json?order=asc' + 'wpAG5_BdecqoADP7-Dtx')
@@ -45,9 +45,9 @@ def index():
         def generate_close(ticker, closing):
             if closing:
                 return plot.line(df['Date'], df['Close'], color='#0000FF', legend=ticker+": Close")
-        def generate_adjclose(ticker,adj_closing):
-            if adj_closing:
-                return plot.line(df['Date'], df['Adj. Close'], color='#009933', legend=ticker+": Adj. Close")            
+        def generate_open(ticker,opening):
+            if opening:
+                return plot.line(df['Date'], df['Open'], color='#009933', legend=ticker+": Open")            
         def generate_volume(ticker, volume):
             if volume:
                 return plot.line(df['Date'], df['Volume'], color='#CC3300', legend=ticker+": Volume")
@@ -58,7 +58,7 @@ def index():
               x_axis_type='datetime')
         
         generate_close(ticker, closing)
-        generate_adjclose(ticker, adj_closing)
+        generate_open(ticker, opening)
         generate_volume(ticker, volume)
         
         script, div = components(plot)
