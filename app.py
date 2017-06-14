@@ -70,7 +70,8 @@ def index():
         bokeh.io.save(plot)
         
         script, div = components(plot, INLINE)
-        return render_template('plot.html', script=script, div=div, company=company, ticker=ticker)
+        return render_template('plot.html', plot={'script':script, 'div':div}, stock={'company':company, 'ticker':ticker})
+    #stock={'code':stockcode, 'period':stockperiod}, plot={'script':script, 'div':div, 'resources':plot_resources}
         #return render_template('index.html')
 
 
