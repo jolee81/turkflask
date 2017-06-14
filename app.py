@@ -51,7 +51,9 @@ def index():
         def generate_volume(ticker, volume):
             if volume:
                 return plot.line(df['Date'], df['Volume'], color='#CC3300', legend=ticker+": Volume")
-            
+                
+        output_file("stockstest.html", title=company)
+                
         plot = figure(tools="pan,wheel_zoom,box_zoom,reset",
               title='Data from Quandle WIKI set',
               x_axis_label='date',
