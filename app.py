@@ -58,6 +58,7 @@ def index():
                 
         plot = figure(tools="pan,wheel_zoom,box_zoom,reset",
               title='Data from Quandle WIKI set',
+              plot_width=800, plot_height=220, 
               x_axis_label='date',
               x_axis_type='datetime')
         
