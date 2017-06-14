@@ -12,6 +12,7 @@ from bokeh.embed import components
 from bokeh.plotting import figure, output_file, show
 #from bokeh.resources import INLINE
 #from bokeh.util.string import encode_utf8
+import os
 
 app = Flask(__name__)
 
@@ -68,6 +69,9 @@ def index():
         #return render_template('index.html')
 
 
+  if __name__ == '__main__':
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port)
     
-if __name__ == '__main__':
-    app.run(port=33507)
+#if __name__ == '__main__':
+#    app.run(port=33507)
