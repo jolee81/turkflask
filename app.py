@@ -53,7 +53,8 @@ def index():
             if volume:
                 return plot.line(df['Date'], df['Volume'], color='#CC3300', legend=ticker+": Volume")
                 
-        output_file("stockplot.html", title=company)
+#        output_file("stockplot.html", title=company)
+       
                 
         plot = figure(tools="pan,wheel_zoom,box_zoom,reset",
               title='Data from Quandle WIKI set',
@@ -64,8 +65,11 @@ def index():
         generate_open(ticker, opening)
         generate_volume(ticker, volume)
         
+        bokeh.io.output_file('templates/plotstock.html')
+        bokeh.io.save(plot)
+        
         script, div = components(plot, INLINE)
-        return render_template('plot.html', company=company, ticker=ticker, script=script, div=div)
+        return render_template('plot.html', script=script, div=div, company=company, ticker=ticker)
         #return render_template('index.html')
 
 
