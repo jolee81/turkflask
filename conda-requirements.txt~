@@ -3,3 +3,5 @@ numpy
 pandas
 bokeh
 flask
+json
+requests
