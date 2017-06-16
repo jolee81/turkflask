@@ -5,13 +5,10 @@ import requests
 import json
 import pandas as pd
 
-
-# bokeh / flask imports
 import flask
 from bokeh.embed import components
 from bokeh.plotting import figure, output_file, show
 from bokeh.resources import INLINE
-#from bokeh.util.string import encode_utf8
 import os
 
 app = Flask(__name__)
@@ -52,10 +49,7 @@ def index():
         def generate_volume(ticker, volume):
             if volume:
                 return plot.line(df['Date'], df['Volume'], color='#CC3300', legend=ticker+": Volume")
-                
-#        output_file("stockplot.html", title=company)
-       
-                
+                       
         plot = figure(tools="pan,wheel_zoom,box_zoom,reset",
               title='Data from Quandle WIKI set',
               plot_width=800, plot_height=220, 
@@ -65,14 +59,9 @@ def index():
         generate_close(ticker, closing)
         generate_open(ticker, opening)
         generate_volume(ticker, volume)
-        
-        bokeh.io.output_file('templates/plotstock.html')
-        bokeh.io.save(plot)
-        
+               
         script, div = components(plot, INLINE)
         return render_template('plot.html', plot={'script':script, 'div':div}, stock={'company':company, 'ticker':ticker})
-    #stock={'code':stockcode, 'period':stockperiod}, plot={'script':script, 'div':div, 'resources':plot_resources}
-        #return render_template('index.html')
 
 
 
