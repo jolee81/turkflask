@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request, redirect
 
-import bokeh
 import requests
 import json
 import pandas as pd
@@ -8,8 +7,8 @@ import pandas as pd
 import flask
 from bokeh.embed import components
 from bokeh.plotting import figure, output_file, show
-from bokeh.resources import INLINE
-import os
+
+
 
 app = Flask(__name__)
 
@@ -59,10 +58,9 @@ def index():
         generate_close(ticker, closing)
         generate_open(ticker, opening)
         generate_volume(ticker, volume)
-               
-        script, div = components(plot, INLINE)
-        return render_template('plot.html', plot={'script':script, 'div':div}, stock={'company':company, 'ticker':ticker})
-
+                    
+        script, div = components(plot)
+        return flask.render_template('plot.html',script=script, div=div, ticker=ticker, company=company)
 
 
     

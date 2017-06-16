@@ -5,12 +5,13 @@
 		<title>Stock Ticker Plot</title>   
 		<link rel="stylesheet" href="http://cdn.pydata.org/bokeh/release/bokeh-0.12.5.min.css" type="text/css" />
          <script type="text/javascript" src="http://cdn.pydata.org/bokeh/release/bokeh-0.12.5.min.js"></script>
-          {{ plot.script | safe }}
+     
+         {{ script | safe }}
 	</head>
 	<body>      
-        <h1>Generated plot for {{stock.company | safe}} ({{stock.ticker | safe}}) </h1>
+        <h1>Generated plot for {{company | safe}} ({{ticker | safe}}) </h1>
        
-         {{ plot.div | safe }}
+         {{ div | safe }}
          
           <h2><a href="/index">Click here to generate a new plot!</a></h2>
   
